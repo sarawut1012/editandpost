@@ -135,7 +135,8 @@ function runScript(e) {
     if (e.keyCode == 13) {
         var el= document.getElementById('demo'); 
         var val = el.value;
-        var x= val.slice(0, el.selectionStart).length;
+        var x= val.slice(0,el.selectionStart).length;
+
         //  ห้ามกด ENTER
         if (old > x) {
              return false; 
@@ -143,19 +144,24 @@ function runScript(e) {
         console.log("index : "+x);
         var text = el.value.substring(start, x);
         console.log(text);
+        if(start == x){
+           start = null;
+           x = null;
+        }
         $('.demo').highlightWithinTextarea({
             highlight: [
+                {
+                    highlight: [start,x],
+                    className: 'highlight2'
+                },
                 {
                     highlight: [0,old],
                     className: 'highlight'
                 },
-                {
-                    highlight: [start,x],
-                    className: 'highlight2'
-                }
+              
             ],
         });
-        start = val.slice(0, el.selectionStart).length;
+        start = el.selectionStart
         startol = start;
         return false; 
     }
