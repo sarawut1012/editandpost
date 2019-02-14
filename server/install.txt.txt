@@ -1,0 +1,6 @@
+install
+       npm install --save ws
+
+run   
+       node server.js 
+   

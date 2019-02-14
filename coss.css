@@ -1,14 +1,14 @@
 @import url(fonts/thsarabunnew.css);
   .highlight2{
     background-color: rgb(238, 191, 104);
-    border-radius: 40px;
+    /* border-radius: 40px; */
     font-family: 'THSarabunNew', sans-serif;
     font-size: 17px; 
                
   }
   .highlight{
     background-color: rgb(238, 188, 191);
-    border-radius: 40px;
+    /* border-radius: 40px; */
     font-family: 'THSarabunNew', sans-serif;
     font-size: 17px;    
 
