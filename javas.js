@@ -144,6 +144,7 @@ function runScript(e) {
         console.log("index : "+x);
         var text = el.value.substring(start, x);
         console.log(text);
+        showuoutput(text);
         if(start == x){
            start = null;
            x = null;
@@ -167,37 +168,38 @@ function runScript(e) {
     }
     
 }
-
-document.querySelector('button').onclick = function(){
-      id = document.getElementById('demo')
-      var text = id.value;
-      text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
-      var blob = new Blob([text], { type: "text/plain"});
-      var anchor = document.createElement("a");
-      anchor.download = "TEXT.txt";
-      anchor.href = window.URL.createObjectURL(blob);
-      anchor.target ="_blank";
-      anchor.style.display = "none"; // just to be safe!
-      document.body.appendChild(anchor);
-      anchor.click();
-      document.body.removeChild(anchor);
-};
-
 function autoGrow (oField) {
     if (oField.scrollHeight > oField.clientHeight) {
       oField.style.height = oField.scrollHeight + "px";
     }
   }
 
-
+  function autoGrow2 (oField) {
+    if (oField.scrollHeight > oField.clientHeight) {
+      oField.style.height = oField.scrollHeight + "px";
+    }
+  }
   $(function() {
-
      // Target a single one
     $("#paper-content").linedtextarea();
   
   });
-  
 
+  $(function() {
+    // Target a single one
+   $("#showoutopt").linedtextarea();
+ });
+
+  
+function showuoutput(output){
+    tex = output.split(" ");
+
+        document.getElementById('showoutopt').innerHTML += tex.join() + "\n";
+        var objDiv = document.getElementById("showoutopt");
+        objDiv.scrollTop = objDiv.scrollHeight;
+// autoGrow2(document.getElementById('showoutopt'));
+
+}
 
    
 

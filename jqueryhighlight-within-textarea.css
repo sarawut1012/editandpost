@@ -3,6 +3,9 @@
 	position: relative;
 	overflow: hidden !important;
 	-webkit-text-size-adjust: none !important;
+
+	width: 100% !important;
+	min-width: 100% !important ;
 }
 
 .hwt-backdrop {
@@ -14,16 +17,23 @@
 	padding-right: 99px !important;
 	overflow-x: hidden !important;
 	overflow-y: auto !important;
+
+	width: 100% !important;
+	min-width: 100% !important ;
 }
 
 .hwt-highlights {
-	width: auto !important;
-	height: auto !important;
+	width: 100% !important;
+	min-width: 100% !important ;
+	height: 100% !important;
 	border-color: transparent !important;
 	white-space: pre-wrap !important;
 	word-wrap: break-word !important;
 	color: transparent !important;
 	overflow: hidden !important;
+
+	width: 100% !important;
+	min-width: 100% !important ;
 }
 
 .hwt-input {
@@ -35,12 +45,17 @@
 	font: inherit;
 	/* overflow-x: hidden !important; */
     /* overflow-y: scroll ; */
-    
+	width: 100% !important;
+	min-width: 100% !important ;
 }
 
 .hwt-content {
-	border: 1px solid;
+	/* border: solid rgb(228, 13, 13);
+	border-width: 0 5px; */
 	background: none transparent !important;
+	color: brown;
+	width: 100% !important;
+	min-width: 100% !important ;
 }
 
 .hwt-content mark {
