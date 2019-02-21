@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
-
-const wss = new WebSocket.Server({ port: 8001 }); 
+const wss = new WebSocket.Server({ port: 8001 });
 // สร้าง websockets server ที่ port 4000
+console.log('run :8001');
 wss.on('connection', function connection(ws) { // สร้าง connection
   ws.on('message', function incoming(message) {
    // รอรับ data อะไรก็ตาม ที่มาจาก client แบบตลอดเวลา
@@ -11,7 +11,7 @@ ws.on('close', function close() {
   // จะทำงานเมื่อปิด Connection ในตัวอย่างคือ ปิด Browser
     console.log('disconnected');
   });
-ws.send('init message to client');
+// ws.send('init message to client');
   // ส่ง data ไปที่ client เชื่อมกับ websocket server นี้
 
     const data = ["ในxจจุบันอินเทอร์เน็ตนั้นมีความสำคัญต่อชีวิตประจำ",
@@ -111,17 +111,33 @@ ws.send('init message to client');
     "และเป็นสมบัติทางวัฒนธรรมอันล้ำค่าของชาติให้มีความถูก",
     "ต้องงดงามคงอยู่คู่สังคมไทยตลอดไป ",
     ];
-    textSequence(0);
+    // textSequence(0);
     function textSequence(i) {
         if (data.length > i) {
             setTimeout(function() {
                 console.log('sending to data to client:', data[i])
-                ws.send(JSON.stringify(data[i]))
+                ws.send(data[i])
                 textSequence(++i);  
-            }, Math.round(Math.random() * (+2000 - +1000) + +1000) ); // time 
+            }, Math.round(Math.random() * (+5000 - +4000) + +4000) ); // time 
         
         }
     }
 });
 
 
+const wss2 = new WebSocket.Server({ port: 8005});
+// สร้าง websockets server ที่ port 8005
+console.log('run :8005');
+wss2.on('connection', function connection(ws) { // สร้าง connection
+    ws.on('message', function incoming(message) {
+        // รอรับ data อะไรก็ตาม ที่มาจาก client แบบตลอดเวลา
+        // console.log('received2: %s', message);
+        ws.send(message);
+    });
+    ws.on('close', function close() {
+        // จะทำงานเมื่อปิด Connection ในตัวอย่างคือ ปิด Browser
+        console.log('disconnected');
+    });
+// ws.send('init messaasdasdadsadsad');
+
+});
