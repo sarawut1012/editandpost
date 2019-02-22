@@ -10,6 +10,8 @@
 
 	let HighlightWithinTextarea = function($el, config) {
 		this.init($el, config);
+
+
 	};
 
 	HighlightWithinTextarea.prototype = {
@@ -350,7 +352,6 @@
 		return this.each(function() {
 			let $this = $(this);
 			let plugin = $this.data(ID);
-
 			if (typeof options === 'string') {
 				if (plugin) {
 					switch (options) {
@@ -378,3 +379,4 @@
 		});
 	};
 })(jQuery);
+

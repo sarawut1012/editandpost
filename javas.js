@@ -1,10 +1,15 @@
-
 const show = document.getElementById("demo");
 var selectionStartt = 0;
 var selectionEndd = 0;
 var start = 0;
 var startol;
 var old = 0;
+
+function myFunction() {
+    // document.querySelector(".demo").focus();
+    document.getElementById('demo').focus();
+    document.getElementById("demo").setSelectionRange(selectionStartt, selectionEndd);
+}
 
 function textformat(text,limit){
     var t = []
@@ -22,6 +27,9 @@ function textformat(text,limit){
             t.push(text.substring(k, text.length).replace(/\w{3}$/gi, '...'))
         }
     }
+    showtext(t)
+}
+function showtext(t){
     show.value += t +"\n"
 }
 
@@ -42,6 +50,7 @@ $(document).ready(function(){
 });
 document.onkeydown = checkKey;
 function checkKey(e) {
+
   e = e || window.event;
   if (e.keyCode == 8) {
     selectionStartt = document.getElementById("demo").selectionStart;
@@ -49,19 +58,18 @@ function checkKey(e) {
     document.getElementById("demo").setSelectionRange(selectionStartt, selectionEndd);
     if (selectionStartt <= startol) {
      var audio = new Audio('sound\\beep.mp3');
-       audio.play();  
+       audio.play();
       return false;
     }
     selectionStartt = selectionStartt - 1;
     selectionEndd = selectionEndd - 1;
   }
 }
-
 document.getElementById('demo').addEventListener('keyup', e => {
   // console.log('index at: ', e.target.selectionStart)
   selectionStartt = e.target.selectionStart;
   selectionEndd = e.target.selectionStart;
-  document.getElementById("demo").setSelectionRange(selectionStartt, selectionEndd);
+    document.getElementById("demo").setSelectionRange(selectionStartt, selectionEndd);
 })
 
 // click 
@@ -92,10 +100,12 @@ function readonly() {
     return false;
   }
 }
-//// enter 
+
+//// enter
 function runScript(e) {
   old = startol;
   if (e.keyCode == 13) {
+      e.preventDefault(); // prevents linebreak
     var el = document.getElementById('demo');
     var val = el.value;
     var x = val.slice(0, el.selectionStart).length;
@@ -112,6 +122,7 @@ function runScript(e) {
       start = null;
       x = null;
     }
+      document.querySelector(".demo").focus();
     $('.demo').highlightWithinTextarea({
       highlight: [
         {
@@ -127,7 +138,9 @@ function runScript(e) {
     });
     start = el.selectionStart
     startol = start;
-    return false;
+
+    myFunction()
+      return false;
   }
 
 }
@@ -137,7 +150,6 @@ function autoGrow(oField) {
     oField.style.height = oField.scrollHeight + "px";
   }
 }
-
 var openFile = function(event) {
   var input = event.target;
   var reader = new FileReader();
